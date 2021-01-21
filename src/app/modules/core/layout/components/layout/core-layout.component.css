@@ -1,0 +1,17 @@
+.app-appears-on-scroll {
+  position: sticky;
+  top: 0;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 150ms 100ms, transform 250ms;
+  will-change: opacity, transform;
+}
+
+.app-appears-on-scroll--visible {
+  transform: none;
+  opacity: 1;
+}
+
+.app-core-layout__logo {
+  margin: 0;
+}

@@ -14,7 +14,6 @@ import { AppComponent } from './app.component';
     RouterModule.forRoot(appRouting),
     BrowserAnimationsModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,10 @@
 import { NgModule, Type } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoreLayoutComponent } from './components';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterModule } from '@angular/router';
+import { AppearsOnScrollDirective } from './directives';
+import { DocumentScrollService } from './services';
 
 const sharedComponents: Type<any>[] = [
   CoreLayoutComponent
@@ -8,13 +12,17 @@ const sharedComponents: Type<any>[] = [
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
+    MatToolbarModule
   ],
   declarations: [
-    CoreLayoutComponent
+    ...sharedComponents,
+    AppearsOnScrollDirective
   ],
-  exports: [
-    CoreLayoutComponent
-  ]
+  providers: [
+    DocumentScrollService
+  ],
+  exports: sharedComponents
 })
 export class CoreLayoutModule {}
