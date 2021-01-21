@@ -44,7 +44,10 @@
               "./node_modules/normalize.css/normalize.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "zone.js/dist/zone-error"
+            ]
           },
           "configurations": {
             "production": {

@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build"
+    "frontend:start": "ng serve",
+    "frontend:build": "ng build",
+    "api:start": "json-server --watch ./api/database.json"
   },
   "private": true,
   "dependencies": {
