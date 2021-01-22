@@ -4,10 +4,10 @@ export const postsRouting: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    loadChildren: () => import('./modules/list').then(m => m.PostsListModule)
+    loadChildren: () => import('./list').then(m => m.PostsListModule)
   },
   {
     path: ':postId',
-    loadChildren: () => import('./modules/details').then(m => m.PostsDetailsModule)
+    loadChildren: () => import('./details').then(m => m.PostsDetailsModule)
   }
 ]

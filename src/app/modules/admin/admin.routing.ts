@@ -8,6 +8,6 @@ export const adminRouting: Routes = [
   },
   {
     path: 'posts',
-    loadChildren: () => import('./modules/posts').then(m => m.AdminPostsModule)
+    loadChildren: () => import('./posts').then(m => m.AdminPostsModule)
   }
 ];

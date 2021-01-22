@@ -6,7 +6,7 @@ import { adminRouting } from './admin.routing';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(adminRouting)
+    RouterModule.forChild(adminRouting),
   ]
 })
 export class AdminModule {}
