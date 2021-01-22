@@ -1,6 +1,10 @@
 <header appAppearsOnScrollDirective>
   <mat-toolbar color="primary">
     <h1 class="app-core-layout__logo">My Blog</h1>
+
+    <div class="app-core-layout__actions">
+      <ng-content select="[appHeaderActions]"></ng-content>
+    </div>
   </mat-toolbar>
 </header>
 
