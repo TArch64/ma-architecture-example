@@ -1,26 +1,22 @@
-import { Directive, ElementRef, Host, HostBinding, OnDestroy, OnInit } from '@angular/core';
+import { Directive, ElementRef, HostBinding, OnDestroy, OnInit } from '@angular/core';
 import { DocumentScrollService } from '../services';
-import { distinctUntilKeyChanged, map, pairwise, throttleTime } from 'rxjs/operators';
+import { distinctUntilKeyChanged, filter, map, pairwise, throttleTime } from 'rxjs/operators';
 import { asyncScheduler, Observable, Subscription } from 'rxjs';
 import { DocumentScrollEvent } from '../models';
 
 type PairedScrollEvents = [DocumentScrollEvent, DocumentScrollEvent];
 interface IScrollActionData {
   isHostVisible: boolean;
+  ignore: boolean;
 }
 
 @Directive({
   selector: '[appAppearsOnScrollDirective]'
 })
 export class AppearsOnScrollDirective implements OnInit, OnDestroy {
-  private static UPDATE_INTERVAL: number = 100;
-  private static ROOT_OFFSET: number = 20;
-  private static COMMON_CLASS: string = 'app-appears-on-scroll';
-  private static VISIBLE_CLASS: string = AppearsOnScrollDirective.COMMON_CLASS + '--visible';
-
-  @HostBinding('class.' + AppearsOnScrollDirective.COMMON_CLASS)
+  @HostBinding('class.app-appears-on-scroll')
   private readonly hostClassCommon: boolean = true;
-  @HostBinding('class.' + AppearsOnScrollDirective.VISIBLE_CLASS)
+  @HostBinding('class.app-appears-on-scroll--visible')
   private hostClassVisible: boolean = true;
 
   private readonly subscription: Subscription = new Subscription();
@@ -41,24 +37,26 @@ export class AppearsOnScrollDirective implements OnInit, OnDestroy {
 
   private createScrollActionDataStream(): Observable<IScrollActionData> {
     return this.documentScrollService.onScroll$.pipe(
-      throttleTime(AppearsOnScrollDirective.UPDATE_INTERVAL, asyncScheduler, { leading: true, trailing: true }),
+      throttleTime(250, asyncScheduler, { leading: true, trailing: true }),
       pairwise(),
       map(this.prepareScrollActionData.bind(this)),
+      filter<IScrollActionData>(scrollActionData => !scrollActionData.ignore),
       distinctUntilKeyChanged<IScrollActionData>('isHostVisible')
     );
   }
 
   private prepareScrollActionData([previousScroll, currentScroll]: PairedScrollEvents): IScrollActionData {
     if (this.isInitialHostArea(currentScroll.offset)) {
-      return { isHostVisible: true };
+      return { isHostVisible: true, ignore: false };
     }
     return {
-      isHostVisible: previousScroll.offset > currentScroll.offset
-    }
+      isHostVisible: previousScroll.offset > currentScroll.offset,
+      ignore: Math.abs(previousScroll.offset - currentScroll.offset) < 50
+    };
   }
 
   private isInitialHostArea(scrollPosition: number): boolean {
-    const initialAreaHeight: number = AppearsOnScrollDirective.ROOT_OFFSET + this.hostHeight;
+    const initialAreaHeight: number = 50 + this.hostHeight;
     return initialAreaHeight > scrollPosition;
   }
 

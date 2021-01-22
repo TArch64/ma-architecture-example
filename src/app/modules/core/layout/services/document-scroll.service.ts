@@ -1,12 +1,13 @@
 import { Inject, Injectable, Renderer2, RendererFactory2 } from '@angular/core';
-import { Observable } from 'rxjs';
+import { asyncScheduler, Observable } from 'rxjs';
 import { DocumentScrollEvent } from '../models';
 import { DOCUMENT } from '@angular/common';
+import { map, throttleTime } from 'rxjs/operators';
 
 @Injectable()
 export class DocumentScrollService {
   private readonly renderer: Renderer2;
-  public readonly onScroll$: Observable<DocumentScrollEvent> = this.createScrollStream();
+  public readonly onScroll$: Observable<DocumentScrollEvent> = this.createOnScrollStream();
 
   constructor(
     @Inject(DOCUMENT) private readonly document: Document,
@@ -15,11 +16,12 @@ export class DocumentScrollService {
     this.renderer = rendererFactory.createRenderer(null, null);
   }
 
-  private createScrollStream(): Observable<DocumentScrollEvent> {
-    return new Observable<DocumentScrollEvent>(subscriber => {
-      this.renderer.listen(this.document, 'scroll', event => {
-        subscriber.next(DocumentScrollEvent.fromNativeScrollEvent(event));
-      });
-    })
+  private createOnScrollStream(): Observable<DocumentScrollEvent> {
+    return new Observable<Event>(subscriber => {
+      this.renderer.listen(this.document, 'scroll', event => subscriber.next(event));
+    }).pipe(
+      throttleTime(100, asyncScheduler, { leading: true, trailing: true }),
+      map(DocumentScrollEvent.fromNativeScrollEvent)
+    )
   }
 }
