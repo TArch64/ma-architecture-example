@@ -7,6 +7,10 @@ export const adminRouting: Routes = [
     redirectTo: 'posts'
   },
   {
+    path: 'auth',
+    loadChildren: () => import('./auth').then(m => m.AdminAuthModule)
+  },
+  {
     path: 'posts',
     loadChildren: () => import('./posts').then(m => m.AdminPostsModule)
   }

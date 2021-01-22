@@ -1,5 +1,5 @@
-<app-core-layout>
-  <ng-container appHeaderActions>
+<app-core-layout fixedHeader>
+  <ng-container appHeaderActions *ngIf="isLogoutVisible">
     <app-core-layout-header-action
       icon="logout"
       title="logout"

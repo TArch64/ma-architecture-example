@@ -13,5 +13,9 @@ export const appRouting: Routes = [
   {
     path: 'admin',
     loadChildren: () => import('./modules/admin').then(m => m.AdminModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'posts'
   }
 ];

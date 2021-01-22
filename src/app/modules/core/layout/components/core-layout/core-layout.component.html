@@ -1,12 +1,10 @@
-<header appAppearsOnScrollDirective>
-  <mat-toolbar color="primary">
-    <h1 class="app-core-layout__logo">My Blog</h1>
+<app-core-layout-header-wrapper [fixed]="fixedHeader">
+  <h1 class="app-core-layout__logo">My Blog</h1>
 
-    <div class="app-core-layout__actions">
-      <ng-content select="[appHeaderActions]"></ng-content>
-    </div>
-  </mat-toolbar>
-</header>
+  <div class="app-core-layout__actions">
+    <ng-content select="[appHeaderActions]"></ng-content>
+  </div>
+</app-core-layout-header-wrapper>
 
 <main>
   <ng-content></ng-content>

@@ -1,0 +1,16 @@
+.app-core-layout-header {
+  position: sticky;
+  top: 0;
+}
+
+.app-appears-on-scroll {
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 150ms 100ms, transform 250ms;
+  will-change: opacity, transform;
+}
+
+.app-appears-on-scroll--visible {
+  transform: none;
+  opacity: 1;
+}

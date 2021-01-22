@@ -1,0 +1,15 @@
+<header class="app-core-layout-header" *ngIf="fixed; else appearsOnScrollWrapper">
+  <ng-container *ngTemplateOutlet="headerContent"></ng-container>
+</header>
+
+<ng-template #appearsOnScrollWrapper>
+  <header class="app-core-layout-header" appAppearsOnScrollDirective>
+    <ng-container *ngTemplateOutlet="headerContent"></ng-container>
+  </header>
+</ng-template>
+
+<ng-template #headerContent>
+  <mat-toolbar color="primary">
+    <ng-content></ng-content>
+  </mat-toolbar>
+</ng-template>
