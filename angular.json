@@ -20,6 +20,9 @@
         "@schematics/angular:directive": {
           "skipImport": true,
           "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
         }
       },
       "root": "",

@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AdminAuthOnlyGuard } from './shared';
 
 export const adminRouting: Routes = [
   {
@@ -12,6 +13,7 @@ export const adminRouting: Routes = [
   },
   {
     path: 'posts',
+    canActivate: [AdminAuthOnlyGuard],
     loadChildren: () => import('./posts').then(m => m.AdminPostsModule)
   }
 ];
