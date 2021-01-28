@@ -1,11 +1,14 @@
-html, body {
-  min-height: 100%;
-}
-
 body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 *, *:before, *:after {
   box-sizing: border-box
+}
+
+html,
+body,
+.block--full-height {
+  display: block;
+  height: 100%;
 }

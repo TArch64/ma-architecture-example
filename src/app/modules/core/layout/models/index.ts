@@ -1,1 +1,1 @@
-export { DocumentScrollEvent } from './document-scroll-event';
+export { LayoutScrollEvent } from './layout-scroll-event';

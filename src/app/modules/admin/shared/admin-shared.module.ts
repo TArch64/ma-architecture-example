@@ -1,8 +1,7 @@
 import { NgModule, Type } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { CoreSharedModule } from '../../core/shared';
-import { CoreLayoutModule } from '../../core/layout';
+import { CoreSharedModule, CoreLayoutModule } from '../../core';
 import { AdminLayoutComponent } from './components';
 import { AdminAuthService } from './services';
 

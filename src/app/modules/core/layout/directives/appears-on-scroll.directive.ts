@@ -1,10 +1,11 @@
-import { Directive, ElementRef, HostBinding, OnDestroy, OnInit } from '@angular/core';
-import { DocumentScrollService } from '../services';
+import { Directive, ElementRef, HostBinding, OnInit } from '@angular/core';
+import { LayoutScrollService } from '../services';
 import { distinctUntilKeyChanged, filter, map, pairwise, throttleTime } from 'rxjs/operators';
-import { asyncScheduler, Observable, Subscription } from 'rxjs';
-import { DocumentScrollEvent } from '../models';
+import { asyncScheduler, Observable } from 'rxjs';
+import { LayoutScrollEvent } from '../models';
+import { AutoUnsubscribe } from '../../shared';
 
-type PairedScrollEvents = [DocumentScrollEvent, DocumentScrollEvent];
+type PairedScrollEvents = [LayoutScrollEvent, LayoutScrollEvent];
 interface IScrollActionData {
   isHostVisible: boolean;
   ignore: boolean;
@@ -13,26 +14,21 @@ interface IScrollActionData {
 @Directive({
   selector: '[appAppearsOnScrollDirective]'
 })
-export class AppearsOnScrollDirective implements OnInit, OnDestroy {
+export class AppearsOnScrollDirective extends AutoUnsubscribe implements OnInit {
   @HostBinding('class.app-appears-on-scroll')
   private readonly hostClassCommon: boolean = true;
   @HostBinding('class.app-appears-on-scroll--visible')
   private hostClassVisible: boolean = true;
 
-  private readonly subscription: Subscription = new Subscription();
-
   constructor(
     private readonly hostRef: ElementRef<HTMLElement>,
-    private readonly documentScrollService: DocumentScrollService
-  ) {}
-
-  public ngOnInit(): void {
-    const scrollActionDataSubscription = this.createScrollActionDataStream().subscribe(this.updateHostVisibility.bind(this));
-    this.subscription.add(scrollActionDataSubscription);
+    private readonly documentScrollService: LayoutScrollService
+  ) {
+    super();
   }
 
-  public ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+  public ngOnInit(): void {
+    this.createScrollActionDataStream().pipe(this.takeUntilDestroyed).subscribe(this.updateHostVisibility.bind(this));
   }
 
   private createScrollActionDataStream(): Observable<IScrollActionData> {
@@ -46,12 +42,12 @@ export class AppearsOnScrollDirective implements OnInit, OnDestroy {
   }
 
   private prepareScrollActionData([previousScroll, currentScroll]: PairedScrollEvents): IScrollActionData {
-    if (this.isInitialHostArea(currentScroll.offset)) {
+    if (this.isInitialHostArea(currentScroll.offsetTop)) {
       return { isHostVisible: true, ignore: false };
     }
     return {
-      isHostVisible: previousScroll.offset > currentScroll.offset,
-      ignore: Math.abs(previousScroll.offset - currentScroll.offset) < 50
+      isHostVisible: previousScroll.offsetTop > currentScroll.offsetTop,
+      ignore: Math.abs(previousScroll.offsetTop - currentScroll.offsetTop) < 50
     };
   }
 

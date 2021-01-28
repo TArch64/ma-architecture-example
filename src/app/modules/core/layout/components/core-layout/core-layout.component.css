@@ -1,7 +1,37 @@
+:host {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.app-core-layout__header {
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+}
+
+.app-core-layout__content {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
 .app-core-layout__logo {
   margin: 0;
 }
 
 .app-core-layout__actions {
   margin-left: auto;
+}
+
+.app-appears-on-scroll {
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 150ms 100ms, transform 250ms;
+  will-change: opacity, transform;
+}
+
+.app-appears-on-scroll--visible {
+  transform: none;
+  opacity: 1;
 }

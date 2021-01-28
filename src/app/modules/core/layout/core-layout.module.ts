@@ -1,12 +1,12 @@
 import { NgModule, Type } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CoreLayoutComponent, CoreLayoutHeaderActionComponent, CoreLayoutHeaderWrapperComponent } from './components';
+import { CoreLayoutComponent, CoreLayoutHeaderActionComponent } from './components';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { AppearsOnScrollDirective } from './directives';
-import { DocumentScrollService } from './services';
+import { LayoutScrollService } from './services';
 import { CoreSharedModule } from '../shared';
 
 const sharedComponents: Type<any>[] = [
@@ -25,11 +25,10 @@ const sharedComponents: Type<any>[] = [
   ],
   declarations: [
     ...sharedComponents,
-    CoreLayoutHeaderWrapperComponent,
     AppearsOnScrollDirective
   ],
   providers: [
-    DocumentScrollService
+    LayoutScrollService
   ],
   exports: sharedComponents
 })

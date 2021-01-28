@@ -1,0 +1,11 @@
+.app-admin-auth-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.app-admin-auth-login__form {
+  max-width: 300px;
+  width: 100%;
+}

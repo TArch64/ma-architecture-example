@@ -1,1 +1,1 @@
-export { DocumentScrollService } from './document-scroll.service';
+export { LayoutScrollService } from './layout-scroll.service';

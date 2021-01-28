@@ -1,0 +1,17 @@
+<form [formGroup]="loginForm" appBindFormErrors (ngSubmit)="login()">
+  <mat-form-field class="app-admin-auth-login-form__field">
+    <mat-label>Email</mat-label>
+    <input matInput type="text" formControlName="email">
+    <mat-error appBindFormControlError="email"></mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="app-admin-auth-login-form__field">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" formControlName="password">
+    <mat-error appBindFormControlError="password"></mat-error>
+  </mat-form-field>
+
+  <button class="app-admin-auth-login-form__submit" mat-raised-button type="submit" color="primary">
+    Login
+  </button>
+</form>

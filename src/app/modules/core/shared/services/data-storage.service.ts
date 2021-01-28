@@ -1,6 +1,6 @@
-import { FactoryProvider, inject, Injectable, InjectionToken } from '@angular/core';
+import { FactoryProvider, InjectionToken } from '@angular/core';
 import { JsonService } from './json.service';
-import { WINDOW } from './window.provider';
+import { WINDOW } from '../helpers';
 
 export class DataStorageService {
   private static NAMESPACE: string = 'arch';
@@ -34,26 +34,34 @@ export class DataStorageService {
   ) {}
 
   public getItem<T>(key: string): T | null {
-    return this.accessToStorage<T | null>(() => {
+    return this.accessStorage<T | null>(() => {
       const json = this.nativeStorage.getItem(this.buildKey(key));
       return this.jsonService.fromJson(json);
     });
   }
 
+  public getSecureItem<T>(key: string): T | null {
+    return this.accessStorage<T | null>(() => {
+      const json = this.nativeStorage.getItem(this.buildKey(key));
+      return this.jsonService.fromSecureJson(json);
+    });
+  }
+
   public setItem<T = any>(key: string, data: T): void {
-    this.accessToStorage(() => {
+    this.accessStorage(() => {
       const json = this.jsonService.toJson(data);
       this.nativeStorage.setItem(this.buildKey(key), json);
     });
   }
 
-  public hasItem(key: string): boolean {
-    return this.accessToStorage<boolean>(() => {
-      return !!this.nativeStorage.getItem(this.buildKey(key));
+  public setSecureItem<T = any>(key: string, data: T): void {
+    this.accessStorage(() => {
+      const json = this.jsonService.toSecureJson(data);
+      this.nativeStorage.setItem(this.buildKey(key), json);
     });
   }
 
-  private accessToStorage<T = void>(runAction: () => T): T {
+  private accessStorage<T = void>(runAction: () => T): T {
     try {
       return runAction();
     } catch (error) {

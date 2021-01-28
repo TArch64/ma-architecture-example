@@ -1,5 +1,12 @@
 import { Inject, Injectable } from '@angular/core';
-import { DataStorageService } from '../../../core/shared';
+import { DataStorageService } from '../../../core';
+import { Observable, of, throwError } from 'rxjs';
+import { AuthCredentialsModel } from '../models';
+
+interface ILoginData {
+  logined: number;
+  email: string;
+}
 
 @Injectable()
 export class AdminAuthService {
@@ -11,6 +18,20 @@ export class AdminAuthService {
   ) {}
 
   public get isAuthenticated(): boolean {
-    return this.dataStorage.hasItem(AdminAuthService.STORAGE_KEY);
+    const loginData = this.dataStorage.getSecureItem<ILoginData>(AdminAuthService.STORAGE_KEY);
+    return !!loginData?.logined;
   }
+
+  public login(credentials: AuthCredentialsModel): Observable<null> {
+    const isValidCredentials = credentials.isValid({ email: 'admin@mail.com', password: 'admin' });
+    if (!isValidCredentials) return throwError(new Error('Invalid email or password'));
+
+    this.dataStorage.setSecureItem<ILoginData>(AdminAuthService.STORAGE_KEY, {
+      logined: Date.now(),
+      email: credentials.email
+    });
+    return of(null);
+  }
+
+
 }

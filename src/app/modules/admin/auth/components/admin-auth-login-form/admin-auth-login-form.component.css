@@ -1,0 +1,9 @@
+.app-admin-auth-login-form__field {
+  display: block;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.app-admin-auth-login-form__submit {
+  width: 100%;
+}

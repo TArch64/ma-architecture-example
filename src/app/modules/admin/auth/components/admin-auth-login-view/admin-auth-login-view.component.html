@@ -1,3 +1,8 @@
 <app-admin-layout hideLogout>
-
+  <div class="app-admin-auth-login">
+    <app-admin-auth-login-form
+      class="app-admin-auth-login__form"
+      (onLogin)="login($event)"
+    ></app-admin-auth-login-form>
+  </div>
 </app-admin-layout>
