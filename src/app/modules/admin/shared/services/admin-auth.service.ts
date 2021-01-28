@@ -19,7 +19,7 @@ export class AdminAuthService {
 
   public get isAuthenticated(): boolean {
     const loginData = this.dataStorage.getSecureItem<ILoginData>(AdminAuthService.STORAGE_KEY);
-    return !!loginData?.logined;
+    return !!loginData?.logined
   }
 
   public login(credentials: AuthCredentialsModel): Observable<null> {
@@ -33,5 +33,7 @@ export class AdminAuthService {
     return of(null);
   }
 
-
+  public logout() {
+    this.dataStorage.removeItem(AdminAuthService.STORAGE_KEY);
+  }
 }

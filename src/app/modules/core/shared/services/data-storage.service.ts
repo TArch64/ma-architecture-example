@@ -61,10 +61,17 @@ export class DataStorageService {
     });
   }
 
+  public removeItem(key: string): void {
+    this.accessStorage(() => {
+      this.nativeStorage.removeItem(this.buildKey(key));
+    });
+  }
+
   private accessStorage<T = void>(runAction: () => T): T {
     try {
       return runAction();
     } catch (error) {
+      console.error(error);
       alert('Opps.. Seems like you have enabled "Private Mode" and some features can be broken');
     }
   }

@@ -24,6 +24,8 @@ export class JsonService {
   }
 
   public fromSecureJson<T>(json: string): T | null {
+    if (!json) return null;
+
     const secretKey = this.generateSecretKey();
     const payloadJson = this.encodingService.decode(json.replace(secretKey, ''));
     const data = this.fromJson<ISecureJson<T>>(payloadJson);

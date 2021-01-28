@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-core-layout-header-action',
@@ -10,4 +10,11 @@ export class CoreLayoutHeaderActionComponent {
   public icon: string;
   @Input()
   public title: string;
+
+  @Output()
+  public readonly onClick = new EventEmitter<null>();
+
+  public proxyClick(): void {
+    this.onClick.emit(null);
+  }
 }
