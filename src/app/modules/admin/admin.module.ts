@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { adminRouting } from './admin.routing';
-import { AdminAuthOnlyGuard, AdminSharedModule } from './shared';
+import { AdminAuthOnlyGuard, AdminSharedModule, AdminUnauthOnlyGuard } from './shared';
 
 @NgModule({
   imports: [
@@ -11,7 +11,8 @@ import { AdminAuthOnlyGuard, AdminSharedModule } from './shared';
     AdminSharedModule
   ],
   providers: [
-    AdminAuthOnlyGuard
+    AdminAuthOnlyGuard,
+    AdminUnauthOnlyGuard
   ]
 })
 export class AdminModule {}
