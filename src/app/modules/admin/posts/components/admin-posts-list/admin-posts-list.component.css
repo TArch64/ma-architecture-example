@@ -1,0 +1,17 @@
+.app-admin-posts-list__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.app-admin-posts-list__title {
+  margin: 0;
+}
+
+.app-admin-posts-list__item--active {
+  background-color: rgba(0, 0, 0, .1);
+}

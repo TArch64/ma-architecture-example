@@ -1,3 +1,19 @@
 <app-admin-layout>
-  <p>admin-posts-view works!</p>
+  <div class="app-admin-posts">
+    <app-admin-posts-list-empty
+      class="app-admin-posts__list"
+      (onAddPost)="addPost()"
+      *ngIf="isListEmpty | async; else postsList"
+    ></app-admin-posts-list-empty>
+
+    <ng-template #postsList>
+      <app-admin-posts-list class="app-admin-posts__list" (onAddPost)="addPost()"></app-admin-posts-list>
+    </ng-template>
+
+    <mat-divider [vertical]="true"></mat-divider>
+
+    <div class="app-admin-posts__item">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </app-admin-layout>

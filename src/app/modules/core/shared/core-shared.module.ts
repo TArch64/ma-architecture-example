@@ -1,7 +1,7 @@
 import { NgModule, Type } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CapitalizePipe } from './pipes';
-import { DataStorageService, JsonService, EncodingService } from './services';
+import { DataStorageService, JsonService, EncodingService, ApiUrlService } from './services';
 
 const sharedPipes: Type<any>[] = [
   CapitalizePipe
@@ -15,6 +15,7 @@ const sharedPipes: Type<any>[] = [
   providers: [
     JsonService,
     EncodingService,
+    ApiUrlService,
     DataStorageService.provideLocalStorage(),
     DataStorageService.provideSessionStorage()
   ],

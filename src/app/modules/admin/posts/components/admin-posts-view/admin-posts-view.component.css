@@ -1,0 +1,13 @@
+.app-admin-posts {
+  display: flex;
+  height: 100%;
+}
+
+.app-admin-posts__list {
+  width: 300px;
+  flex-shrink: 0;
+}
+
+.app-admin-posts__item {
+  flex-grow: 1;
+}
