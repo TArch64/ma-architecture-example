@@ -1,12 +1,8 @@
-<header class="app-core-layout__header">
-  <mat-toolbar color="primary">
-    <h1 class="app-core-layout__logo">My Blog</h1>
-
-    <div class="app-core-layout__actions">
-      <ng-content select="[appHeaderActions]"></ng-content>
-    </div>
-  </mat-toolbar>
-</header>
+<app-core-layout-header class="app-core-layout__header">
+  <ng-container appActions>
+    <ng-content select="[appHeaderActions]"></ng-content>
+  </ng-container>
+</app-core-layout-header>
 
 <main class="app-core-layout__content">
   <ng-content></ng-content>

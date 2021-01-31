@@ -1,0 +1,18 @@
+.app-core-layout-header__home-link {
+  color: #FFF;
+  transition: opacity .1s ease;
+  will-change: opacity;
+}
+
+.app-core-layout-header__home-link:hover,
+.app-core-layout-header__home-link:focus {
+  opacity: .8;
+}
+
+.app-core-layout-header__logo {
+  margin: 0;
+}
+
+.app-core-layout-header__actions {
+  margin-left: auto;
+}

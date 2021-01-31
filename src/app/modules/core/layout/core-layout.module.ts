@@ -1,6 +1,6 @@
 import { NgModule, Type } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CoreLayoutComponent, CoreLayoutHeaderActionComponent } from './components';
+import { CoreLayoutComponent, CoreLayoutHeaderActionComponent, CoreLayoutHeaderComponent } from './components';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,7 +23,10 @@ const sharedDeclarations: Type<any>[] = [
     MatProgressBarModule,
     CoreSharedModule
   ],
-  declarations: sharedDeclarations,
+  declarations: [
+    ...sharedDeclarations,
+    CoreLayoutHeaderComponent
+  ],
   exports: sharedDeclarations
 })
 export class CoreLayoutModule {}

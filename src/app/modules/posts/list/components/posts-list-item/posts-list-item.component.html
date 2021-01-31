@@ -1,0 +1,9 @@
+<a [routerLink]="['/posts', post.id]">
+  <mat-card class="app-posts-list-item">
+    <mat-card-header class="app-posts-list-item__header">
+      <mat-card-title>{{ post.title }}</mat-card-title>
+    </mat-card-header>
+
+    <img class="app-posts-list-item__illustration" [src]="illustrationUrl" [alt]="post.title">
+  </mat-card>
+</a>

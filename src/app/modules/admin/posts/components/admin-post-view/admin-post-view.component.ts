@@ -44,6 +44,7 @@ export class AdminPostViewComponent extends AutoUnsubscribe {
 
   private processUpdate(updates: AdminPostChanges) {
     const isEditorValid = this.postEditor.validate();
+    if (!isEditorValid && !updates.isPublished) return;
     if (!isEditorValid) return this.onEditorValidationError();
 
     const publishAction = AdminPostUpdateAction.create(updates);

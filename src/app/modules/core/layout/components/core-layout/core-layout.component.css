@@ -16,11 +16,3 @@
   flex-grow: 1;
   flex-basis: 0;
 }
-
-.app-core-layout__logo {
-  margin: 0;
-}
-
-.app-core-layout__actions {
-  margin-left: auto;
-}

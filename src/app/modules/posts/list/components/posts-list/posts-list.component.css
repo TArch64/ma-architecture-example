@@ -1,0 +1,27 @@
+.app-posts-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: auto;
+  grid-gap: 24px;
+  padding: 24px;
+}
+@media (min-width: 768px) {
+  .app-posts-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .app-posts-list__item:first-of-type {
+    grid-area: 1 / 1 / 3 / 3;
+  }
+}
+
+
+@media (min-width: 1200px) {
+  .app-posts-list {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .app-posts-list__item:first-of-type {
+    grid-area: 1 / 1 / 3 / 3;
+  }
+}

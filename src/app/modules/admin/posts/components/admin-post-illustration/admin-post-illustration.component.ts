@@ -1,4 +1,4 @@
-import { Component, ElementRef, forwardRef } from '@angular/core';
+import { Component, forwardRef } from '@angular/core';
 import { AdminPostIllustrationModel } from '../../models';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -22,8 +22,6 @@ export class AdminPostIllustrationComponent implements ControlValueAccessor {
   private emitChanged!: EmitChanged;
   private emitTouched!: EmitTouched;
 
-  constructor(private readonly hostRef: ElementRef<HTMLElement>) {}
-
   public onSelected(file: File): void {
     AdminPostIllustrationModel.fromFile(file).subscribe(this.changeIllustration.bind(this));
   }
@@ -36,7 +34,6 @@ export class AdminPostIllustrationComponent implements ControlValueAccessor {
     this.writeValue(illustration);
     this.emitTouched();
     this.emitChanged(illustration);
-    this.hostRef.nativeElement.blur();
   }
 
   public writeValue(illustration: AdminPostIllustrationModel): void {

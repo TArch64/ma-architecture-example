@@ -1,4 +1,4 @@
-import { Component, ElementRef, forwardRef, HostBinding, HostListener, ViewEncapsulation } from '@angular/core';
+import { Component, forwardRef, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 type EmitChanged = (text: string) => void;
@@ -23,11 +23,6 @@ export class TextEditorComponent implements ControlValueAccessor {
   private emitChanged!: EmitChanged;
   private emitTouched!: EmitTouched;
 
-  @HostBinding('class.app-text-editor')
-  private readonly hostBaseClass = true;
-
-  constructor(private readonly hostRef: ElementRef<HTMLElement>) {}
-
   public onTextInput(text: string): void {
     this.writeValue(text);
     this.emitChanged(text);
@@ -43,10 +38,5 @@ export class TextEditorComponent implements ControlValueAccessor {
 
   public registerOnTouched(emitTouched: EmitTouched): void {
     this.emitTouched = emitTouched;
-  }
-
-  @HostListener('focusout')
-  public onFocusOut(): void {
-    this.hostRef.nativeElement.blur();
   }
 }

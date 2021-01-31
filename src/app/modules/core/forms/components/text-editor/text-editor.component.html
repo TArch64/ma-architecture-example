@@ -1,1 +1,1 @@
-<textarea [froalaEditor] [value]="text" (froalaModelChange)="onTextInput(nativeEditor.value)" #nativeEditor>{{ text }}</textarea>
+<textarea [froalaEditor] [froalaModel]="text" (froalaModelChange)="onTextInput(nativeEditor.value)" #nativeEditor>{{ text }}</textarea>

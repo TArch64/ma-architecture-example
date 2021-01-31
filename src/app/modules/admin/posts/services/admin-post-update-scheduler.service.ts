@@ -10,7 +10,7 @@ export class AdminPostUpdateSchedulerService {
 
   private createUpdateStream(): Observable<AdminPostChanges> {
     return this.schedulerSubject.asObservable().pipe(
-      debounceTime(500)
+      debounceTime(1000)
     );
   }
 
