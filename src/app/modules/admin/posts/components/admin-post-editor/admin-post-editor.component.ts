@@ -13,7 +13,8 @@ export class AdminPostEditorComponent extends AutoUnsubscribe {
   @Input()
   public set post(post: AdminPostModel) {
     this.postEditorForm.patchValue({
-      title: post.title
+      title: post.title,
+      illustration: post.illustration
     }, { emitEvent: false });
   }
 
@@ -33,8 +34,9 @@ export class AdminPostEditorComponent extends AutoUnsubscribe {
 
   private createEditorForm(): FormGroup {
     const form = this.formBuilder.group({
-      title: ['', requireField]
-    }, { updateOn: 'blur' });
+      title: ['', requireField],
+      illustration: null
+    });
 
     form.valueChanges.pipe(this.takeUntilDestroyed).subscribe(data => this.onUpdate.emit(data));
 

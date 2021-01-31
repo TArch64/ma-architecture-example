@@ -1,0 +1,24 @@
+<p>Illustration</p>
+
+<div class="app-admin-posts-illustration__preview" *ngIf="illustration; else selector">
+  <img class="app-admin-posts-illustration__preview-image" [src]="illustration.url" [alt]="illustration.filename">
+
+  <button
+    class="app-admin-posts-illustration__preview-remove"
+    mat-mini-fab
+    color="primary"
+    (click)="remove()"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>
+
+<ng-template #selector>
+  <ngx-dropzone
+    accept="image/jpeg,image/jpg,image/png,image/gif"
+    [multiple]="false"
+    (change)="onSelected($event.addedFiles[0])"
+  >
+    <ngx-dropzone-label>Drag'n'Drop or click to upload post illustration</ngx-dropzone-label>
+  </ngx-dropzone>
+</ng-template>

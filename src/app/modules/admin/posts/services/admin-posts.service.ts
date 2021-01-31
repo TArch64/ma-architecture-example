@@ -28,7 +28,8 @@ export class AdminPostsService {
     const url = this.apiUrlService.build(['posts']);
     const payload = {
       title: '',
-      isPublished: false
+      isPublished: false,
+      illustration: null
     };
     return this.http.post<IAdminPostsItemJson>(url, payload).pipe(
       map(AdminPostsItemModel.fromJson)

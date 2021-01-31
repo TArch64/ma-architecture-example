@@ -1,0 +1,18 @@
+.app-admin-posts-illustration__preview {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #EEE;
+}
+
+.app-admin-posts-illustration__preview-image {
+  max-width: 100%;
+  max-height: 500px;
+}
+
+.app-admin-posts-illustration__preview-remove {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}

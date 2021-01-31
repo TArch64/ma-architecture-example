@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import {
   AdminPostEditorComponent,
   AdminPostHeaderComponent,
+  AdminPostIllustrationComponent,
   AdminPostPublishComponent,
   AdminPostsListComponent,
   AdminPostsListEmptyComponent,
@@ -26,6 +27,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { CoreAlertsModule, CoreFormsModule } from '../../core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
   imports: [
@@ -42,7 +44,8 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatInputModule,
     CoreFormsModule,
-    CoreAlertsModule
+    CoreAlertsModule,
+    NgxDropzoneModule
   ],
   declarations: [
     AdminPostsViewComponent,
@@ -52,7 +55,8 @@ import { MatInputModule } from '@angular/material/input';
     AdminPostViewComponent,
     AdminPostHeaderComponent,
     AdminPostPublishComponent,
-    AdminPostEditorComponent
+    AdminPostEditorComponent,
+    AdminPostIllustrationComponent
   ],
   providers: [
     AdminPostsService,

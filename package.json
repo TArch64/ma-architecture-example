@@ -25,6 +25,7 @@
     "@ngxs/store": "^3.7.1",
     "@types/node": "^12.11.1",
     "ngx-boolean-input": "^1.1.0",
+    "ngx-dropzone": "^3.0.0",
     "normalize.css": "^8.0.1",
     "rxjs": "^6.6.3",
     "ts-node": "~8.3.0",

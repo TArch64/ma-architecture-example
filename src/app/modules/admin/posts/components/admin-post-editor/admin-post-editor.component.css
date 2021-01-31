@@ -2,7 +2,8 @@
   padding: 8px 16px;
 }
 
-.app-admin-post-editor__text-field {
+.app-admin-post-editor__field {
+  display: block;
   width: 100%;
   max-width: 400px;
 }

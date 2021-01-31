@@ -6,3 +6,4 @@ export { AdminPostViewComponent } from './admin-post-view/admin-post-view.compon
 export { AdminPostHeaderComponent } from './admin-post-header/admin-post-header.component';
 export { AdminPostPublishComponent } from './admin-post-publish/admin-post-publish.component';
 export { AdminPostEditorComponent } from './admin-post-editor/admin-post-editor.component';
+export { AdminPostIllustrationComponent } from './admin-post-illustration/admin-post-illustration.component';
