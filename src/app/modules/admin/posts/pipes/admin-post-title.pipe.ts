@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { AdminPostsItemModel } from '../models';
 
 interface IPostLike {
   id: number;
@@ -14,7 +13,7 @@ export class AdminPostTitlePipe implements PipeTransform {
     return post.title || this.generateTemporaryTitle(post);
   }
 
-  private generateTemporaryTitle(post: AdminPostsItemModel): string {
+  private generateTemporaryTitle(post: IPostLike): string {
     return `Unnamed post #${post.id}`;
   }
 }

@@ -5,3 +5,4 @@ export { AdminPostsListEmptyComponent } from './admin-posts-list-empty/admin-pos
 export { AdminPostViewComponent } from './admin-post-view/admin-post-view.component';
 export { AdminPostHeaderComponent } from './admin-post-header/admin-post-header.component';
 export { AdminPostPublishComponent } from './admin-post-publish/admin-post-publish.component';
+export { AdminPostEditorComponent } from './admin-post-editor/admin-post-editor.component';

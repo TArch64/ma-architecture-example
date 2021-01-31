@@ -3,7 +3,6 @@ import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { IAdminPostsState } from '../type';
 import {
   AdminPostFetchAction,
-  AdminPostPublishAction,
   AdminPostsAddAction,
   AdminPostsFetchListAction,
   AdminPostUpdateAction
@@ -68,17 +67,20 @@ export class AdminPostsState {
     );
   }
 
-  @Action(AdminPostPublishAction)
-  public togglePublishedStatus(context: StateContext<IAdminPostsState>, action: AdminPostPublishAction): Observable<void> {
-    const updatePost = AdminPostUpdateAction.create({ isPublished: action.toPublish });
-    return context.dispatch(updatePost);
-  }
-
   @Action(AdminPostUpdateAction)
   public updatePost(context: StateContext<IAdminPostsState>, action: AdminPostUpdateAction): Observable<AdminPostModel> {
     const post = context.getState().selectedPost.update(action.updates);
     return this.postsService.updatePost(post).pipe(
-      tap(updatedPost => context.patchState({ selectedPost: updatedPost }))
+      tap(updatedPost => this.onPostUpdated(context, updatedPost))
     );
+  }
+
+  private onPostUpdated(actionContext: StateContext<IAdminPostsState>, post: AdminPostModel): void {
+    const posts = actionContext.getState().list.slice();
+    const postIndex = posts.findIndex(item => item.id === post.id);
+    const postsItem = posts[postIndex].update({ title: post.title });
+    posts.splice(postIndex, 1, postsItem);
+
+    actionContext.patchState({ selectedPost: post, list: posts });
   }
 }

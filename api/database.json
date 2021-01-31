@@ -2,13 +2,13 @@
   "posts": [
     {
       "id": 1,
-      "title": "",
+      "title": "test",
       "isPublished": true
     },
     {
-      "title": "",
-      "isPublished": false,
-      "id": 2
+      "id": 2,
+      "title": "test",
+      "isPublished": false
     }
   ]
 }

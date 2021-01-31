@@ -1,4 +1,12 @@
-<app-admin-post-header
-  [post]="post$ | async"
-  (onTogglePublished)="togglePublished($event)"
-></app-admin-post-header>
+<ng-container *ngIf="(post$ | async) as post">
+  <app-admin-post-header
+    [post]="post"
+    (onTogglePublished)="togglePublished($event)"
+  ></app-admin-post-header>
+
+  <app-admin-post-editor
+    [post]="post"
+    (onUpdate)="update($event)"
+    #editor
+  ></app-admin-post-editor>
+</ng-container>

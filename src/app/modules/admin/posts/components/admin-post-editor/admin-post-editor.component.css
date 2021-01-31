@@ -1,0 +1,8 @@
+.app-admin-post-editor {
+  padding: 8px 16px;
+}
+
+.app-admin-post-editor__text-field {
+  width: 100%;
+  max-width: 400px;
+}

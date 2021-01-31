@@ -1,4 +1,4 @@
-import { IAdminPostsItemJson } from '../type';
+import { AdminPostsItemChanges, IAdminPostsItemJson } from '../type';
 
 export class AdminPostsItemModel {
   public static fromJson(json: IAdminPostsItemJson): AdminPostsItemModel {
@@ -9,4 +9,8 @@ export class AdminPostsItemModel {
     public readonly id: number,
     public readonly title: string
   ) {}
+
+  public update(changes: AdminPostsItemChanges): AdminPostsItemModel {
+    return new AdminPostsItemModel(this.id, changes.title ?? this.title);
+  }
 }

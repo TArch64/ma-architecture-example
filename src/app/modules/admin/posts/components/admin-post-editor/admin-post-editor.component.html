@@ -1,0 +1,7 @@
+<form class="app-admin-post-editor" [formGroup]="postEditorForm" appBindFormErrors>
+  <mat-form-field class="app-admin-post-editor__text-field">
+    <mat-label>Title</mat-label>
+    <input matInput type="text" formControlName="title">
+    <mat-error appBindFormControlError="title"></mat-error>
+  </mat-form-field>
+</form>

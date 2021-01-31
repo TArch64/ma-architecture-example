@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import {
+  AdminPostEditorComponent,
   AdminPostHeaderComponent,
   AdminPostPublishComponent,
   AdminPostsListComponent,
@@ -22,19 +23,26 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { AdminPostTitlePipe } from './pipes';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { CoreAlertsModule, CoreFormsModule } from '../../core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(adminPostsRouting),
-    NgxsModule.forFeature([AdminPostsState]),
+    NgxsModule.forFeature([ AdminPostsState ]),
     HttpClientModule,
     AdminSharedModule,
     MatListModule,
     MatDividerModule,
     MatButtonModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    CoreFormsModule,
+    CoreAlertsModule
   ],
   declarations: [
     AdminPostsViewComponent,
@@ -43,7 +51,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     AdminPostTitlePipe,
     AdminPostViewComponent,
     AdminPostHeaderComponent,
-    AdminPostPublishComponent
+    AdminPostPublishComponent,
+    AdminPostEditorComponent
   ],
   providers: [
     AdminPostsService,

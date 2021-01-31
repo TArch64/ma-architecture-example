@@ -1,4 +1,4 @@
-import { IAdminPostJson } from '../type';
+import { AdminPostChanges, IAdminPostJson } from '../type';
 
 export class AdminPostModel {
   public static fromJson(json: IAdminPostJson): AdminPostModel {
@@ -11,9 +11,9 @@ export class AdminPostModel {
     public readonly isPublished: boolean
   ) {}
 
-  public update(updates: Partial<IAdminPostJson>): AdminPostModel {
+  public update(updates: AdminPostChanges): AdminPostModel {
     return new AdminPostModel(
-      updates.id ?? this.id,
+      this.id,
       updates.title ?? this.title,
       updates.isPublished ?? this.isPublished
     );
