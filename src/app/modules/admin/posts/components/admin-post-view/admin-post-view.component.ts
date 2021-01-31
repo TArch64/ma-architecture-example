@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Select, Store } from '@ngxs/store';
+import { AdminPostPublishAction, AdminPostsState } from '../../store';
+import { Observable } from 'rxjs';
+import { AdminPostModel } from '../../models';
 
 @Component({
   selector: 'app-admin-post-view',
@@ -7,5 +10,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./admin-post-view.component.css']
 })
 export class AdminPostViewComponent {
-  constructor(public readonly activatedRoute: ActivatedRoute) {}
+  @Select(AdminPostsState.selectedPost)
+  public readonly post$: Observable<AdminPostModel>;
+
+  constructor(private readonly store: Store) {}
+
+  public togglePublished(toPublish: boolean): void {
+    const publishAction = AdminPostPublishAction.create(toPublish);
+    this.store.dispatch(publishAction).subscribe();
+  }
 }

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Select, Store } from '@ngxs/store';
 import { AdminPostsAddAction, AdminPostsState } from '../../store';
-import { LayoutLoadingService } from '../../../../core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,16 +15,13 @@ export class AdminPostsViewComponent {
 
   constructor(
     private readonly store: Store,
-    private readonly router: Router,
-    private readonly loadingService: LayoutLoadingService
+    private readonly router: Router
   ) {}
 
   public addPost(): void {
-    this.loadingService.show();
     this.store.dispatch(AdminPostsAddAction.create()).subscribe(() => {
       const post = this.store.selectSnapshot(AdminPostsState.lastAddedItem);
-      this.router.navigate(['/admin', 'posts', post.id])
-      this.loadingService.hide();
+      this.router.navigate(['/admin', 'posts', post.id]);
     });
   }
 }

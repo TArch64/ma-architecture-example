@@ -1,6 +1,6 @@
 import { NgModule, Type } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CoreLayoutComponent, CoreLayoutHeaderActionComponent, CoreLayoutLoadingComponent } from './components';
+import { CoreLayoutComponent, CoreLayoutHeaderActionComponent } from './components';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,8 +27,7 @@ const sharedComponents: Type<any>[] = [
   ],
   declarations: [
     ...sharedComponents,
-    AppearsOnScrollDirective,
-    CoreLayoutLoadingComponent
+    AppearsOnScrollDirective
   ],
   providers: [
     LayoutScrollService

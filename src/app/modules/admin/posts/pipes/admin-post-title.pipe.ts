@@ -1,11 +1,16 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { AdminPostsItemModel } from '../models';
 
+interface IPostLike {
+  id: number;
+  title: string;
+}
+
 @Pipe({
-  name: 'adminPostsListItemTitle'
+  name: 'adminPostTitle'
 })
-export class AdminPostsListItemTitlePipe implements PipeTransform {
-  public transform(post: AdminPostsItemModel): string {
+export class AdminPostTitlePipe implements PipeTransform {
+  public transform(post: IPostLike): string {
     return post.title || this.generateTemporaryTitle(post);
   }
 

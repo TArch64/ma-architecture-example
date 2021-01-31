@@ -1,7 +1,7 @@
 import { IAdminPostsItemJson } from '../type';
 
 export class AdminPostsItemModel {
-  public static fromApiData(json: IAdminPostsItemJson): AdminPostsItemModel {
+  public static fromJson(json: IAdminPostsItemJson): AdminPostsItemModel {
     return new AdminPostsItemModel(json.id, json.title);
   }
 

@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { AdminPostsViewComponent, AdminPostViewComponent } from './components';
-import { AdminPostsListResolver } from './resolvers';
+import { AdminPostResolver, AdminPostsListResolver } from './resolvers';
 
 export const adminPostsRouting: Routes = [
   {
@@ -10,6 +10,7 @@ export const adminPostsRouting: Routes = [
     children: [
       {
         path: ':postId',
+        resolve: { post: AdminPostResolver },
         component: AdminPostViewComponent
       }
     ]

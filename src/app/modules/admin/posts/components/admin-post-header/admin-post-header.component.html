@@ -1,0 +1,10 @@
+<mat-toolbar>
+  <h3>Edit "{{ post | adminPostTitle }}"</h3>
+
+  <div class="app-admin-post-header__actions">
+    <app-admin-post-publish
+      [published]="post.isPublished"
+      (onToggle)="togglePublished($event)"
+    ></app-admin-post-publish>
+  </div>
+</mat-toolbar>

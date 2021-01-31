@@ -1,1 +1,1 @@
-export { AdminPostsListItemTitlePipe } from './admin-posts-list-item-title.pipe';
+export { AdminPostTitlePipe } from './admin-post-title.pipe';

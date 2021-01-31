@@ -1,1 +1,4 @@
-{{ activatedRoute.snapshot.paramMap.get('postId') }}
+<app-admin-post-header
+  [post]="post$ | async"
+  (onTogglePublished)="togglePublished($event)"
+></app-admin-post-header>

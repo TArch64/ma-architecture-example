@@ -4,20 +4,14 @@ import { AdminPostsItemModel } from '../models';
 import { Observable } from 'rxjs';
 import { Store } from '@ngxs/store';
 import { AdminPostsFetchListAction } from '../store';
-import { LayoutLoadingService } from '../../../core';
-import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class AdminPostsListResolver  implements Resolve<AdminPostsItemModel[]>{
   constructor(
-    private readonly store: Store,
-    private readonly loadingService: LayoutLoadingService
+    private readonly store: Store
   ) {}
 
   public resolve(): Observable<AdminPostsItemModel[]> {
-    this.loadingService.show();
-    return this.store.dispatch(AdminPostsFetchListAction.create()).pipe(
-      tap(() => this.loadingService.hide())
-    )
+    return this.store.dispatch(AdminPostsFetchListAction.create());
   }
 }

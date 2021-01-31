@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import {
+  AdminPostHeaderComponent,
+  AdminPostPublishComponent,
   AdminPostsListComponent,
   AdminPostsListEmptyComponent,
   AdminPostsViewComponent,
@@ -13,12 +15,13 @@ import { AdminPostsService } from './services';
 import { NgxsModule } from '@ngxs/store';
 import { AdminPostsState } from './store';
 import { HttpClientModule } from '@angular/common/http';
-import { AdminPostsListResolver } from './resolvers';
+import { AdminPostsListResolver, AdminPostResolver } from './resolvers';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { AdminPostsListItemTitlePipe } from './pipes';
+import { AdminPostTitlePipe } from './pipes';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   imports: [
@@ -30,18 +33,22 @@ import { AdminPostsListItemTitlePipe } from './pipes';
     MatListModule,
     MatDividerModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatToolbarModule
   ],
   declarations: [
     AdminPostsViewComponent,
     AdminPostsListComponent,
     AdminPostsListEmptyComponent,
-    AdminPostsListItemTitlePipe,
-    AdminPostViewComponent
+    AdminPostTitlePipe,
+    AdminPostViewComponent,
+    AdminPostHeaderComponent,
+    AdminPostPublishComponent
   ],
   providers: [
     AdminPostsService,
-    AdminPostsListResolver
+    AdminPostsListResolver,
+    AdminPostResolver
   ]
 })
 export class AdminPostsModule {}
