@@ -6,8 +6,6 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { AppearsOnScrollDirective } from './directives';
-import { LayoutScrollService } from './services';
 import { CoreSharedModule } from '../shared';
 
 const sharedComponents: Type<any>[] = [
@@ -25,13 +23,7 @@ const sharedComponents: Type<any>[] = [
     MatProgressBarModule,
     CoreSharedModule
   ],
-  declarations: [
-    ...sharedComponents,
-    AppearsOnScrollDirective
-  ],
-  providers: [
-    LayoutScrollService
-  ],
+  declarations: sharedComponents,
   exports: sharedComponents
 })
 export class CoreLayoutModule {}

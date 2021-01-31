@@ -1,7 +1,8 @@
-.app-admin-post-header__actions {
-  margin-left: auto;
+.app-admin-post-header {
+  height: 56px;
+  padding-right: 8px;
 }
 
-.app-admin-post-header__action-text {
-  margin-left: 8px;
+.app-admin-post-header__actions {
+  margin-left: auto;
 }
