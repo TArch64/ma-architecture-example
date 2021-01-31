@@ -3,6 +3,7 @@
     {
       "id": 1,
       "title": "test 1",
+      "content": "<p>test</p>",
       "isPublished": false,
       "illustration": null
     }

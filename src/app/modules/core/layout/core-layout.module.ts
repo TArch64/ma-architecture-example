@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CoreSharedModule } from '../shared';
 
-const sharedComponents: Type<any>[] = [
+const sharedDeclarations: Type<any>[] = [
   CoreLayoutComponent,
   CoreLayoutHeaderActionComponent
 ];
@@ -23,7 +23,7 @@ const sharedComponents: Type<any>[] = [
     MatProgressBarModule,
     CoreSharedModule
   ],
-  declarations: sharedComponents,
-  exports: sharedComponents
+  declarations: sharedDeclarations,
+  exports: sharedDeclarations
 })
 export class CoreLayoutModule {}

@@ -6,6 +6,7 @@ export class AdminPostModel {
     return new AdminPostModel(
       json.id,
       json.title,
+      json.content,
       json.isPublished,
       json.illustration ? AdminPostIllustrationModel.fromJson(json.illustration) : null
     );
@@ -14,6 +15,7 @@ export class AdminPostModel {
   private constructor(
     public readonly id: number,
     public readonly title: string,
+    public readonly content: string,
     public readonly isPublished: boolean,
     public readonly illustration: AdminPostIllustrationModel | null
   ) {}
@@ -22,6 +24,7 @@ export class AdminPostModel {
     return new AdminPostModel(
       this.id,
       updates.title ?? this.title,
+      updates.content ?? this.content,
       updates.isPublished ?? this.isPublished,
       updates.hasOwnProperty('illustration') ? updates.illustration : this.illustration
     );
@@ -31,6 +34,7 @@ export class AdminPostModel {
     return {
       id: this.id,
       title: this.title,
+      content: this.content,
       isPublished: this.isPublished,
       illustration: this.illustration?.toJson() ?? null
     };

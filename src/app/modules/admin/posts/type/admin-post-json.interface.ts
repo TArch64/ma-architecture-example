@@ -3,6 +3,7 @@ import { IAdminPostIllustrationJson } from './admin-post-illustration-json.inter
 export interface IAdminPostJson {
   id: number;
   title: string;
+  content: string;
   isPublished: boolean;
   illustration: IAdminPostIllustrationJson | null;
 }

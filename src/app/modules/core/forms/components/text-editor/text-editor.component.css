@@ -1,0 +1,7 @@
+@import "~froala-editor/css/froala_editor.pkgd.css";
+@import "~froala-editor/css/froala_style.css";
+
+.fr-second-toolbar,
+.fr-toolbar.fr-top {
+  border-radius: 0;
+}

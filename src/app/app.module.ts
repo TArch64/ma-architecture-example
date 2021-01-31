@@ -14,10 +14,10 @@ import { environment } from '../environments';
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRouting),
+    BrowserAnimationsModule,
     NgxsModule.forRoot([], {
       developmentMode: !environment.production
-    }),
-    BrowserAnimationsModule
+    })
   ],
   bootstrap: [AppComponent]
 })

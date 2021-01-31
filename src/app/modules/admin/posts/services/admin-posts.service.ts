@@ -28,6 +28,7 @@ export class AdminPostsService {
     const url = this.apiUrlService.build(['posts']);
     const payload = {
       title: '',
+      content: '',
       isPublished: false,
       illustration: null
     };

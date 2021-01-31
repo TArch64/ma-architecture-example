@@ -5,7 +5,7 @@ import { CoreSharedModule, CoreLayoutModule } from '../../core';
 import { AdminLayoutComponent } from './components';
 import { AdminAuthService } from './services';
 
-const sharedComponents: Type<any>[] = [
+const sharedDeclarations: Type<any>[] = [
   AdminLayoutComponent
 ];
 
@@ -16,10 +16,10 @@ const sharedComponents: Type<any>[] = [
     CoreSharedModule,
     CoreLayoutModule
   ],
-  declarations: sharedComponents,
+  declarations: sharedDeclarations,
   providers: [
     AdminAuthService
   ],
-  exports: sharedComponents
+  exports: sharedDeclarations
 })
 export class AdminSharedModule {}

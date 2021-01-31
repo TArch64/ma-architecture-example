@@ -24,6 +24,7 @@
     "@angular/router": "~11.0.9",
     "@ngxs/store": "^3.7.1",
     "@types/node": "^12.11.1",
+    "angular-froala-wysiwyg": "^3.2.6",
     "ngx-boolean-input": "^1.1.0",
     "ngx-dropzone": "^3.0.0",
     "normalize.css": "^8.0.1",

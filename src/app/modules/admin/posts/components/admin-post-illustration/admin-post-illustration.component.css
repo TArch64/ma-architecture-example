@@ -16,3 +16,7 @@
   top: 8px;
   right: 8px;
 }
+
+.app-admin-posts-illustration__selector {
+  border-radius: 0;
+}
