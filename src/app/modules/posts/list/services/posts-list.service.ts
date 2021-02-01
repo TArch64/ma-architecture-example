@@ -5,14 +5,14 @@ import { HttpClient } from '@angular/common/http';
 import { ApiUrlService } from '../../../core';
 import { map } from 'rxjs/operators';
 
+interface IPostItemIllustrationApiJson {
+  url: string;
+}
+
 interface IPostItemApiJson {
   id: number;
   title: string;
   illustration: IPostItemIllustrationApiJson | null;
-}
-
-interface IPostItemIllustrationApiJson {
-  url: string;
 }
 
 @Injectable()

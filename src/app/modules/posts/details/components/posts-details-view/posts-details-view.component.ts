@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { PostDetailsModel } from '../../models';
+import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-posts-details-view',
   templateUrl: './posts-details-view.component.html',
   styleUrls: ['./posts-details-view.component.css']
 })
-export class PostsDetailsViewComponent implements OnInit {
+export class PostsDetailsViewComponent {
+  public readonly post$: Observable<PostDetailsModel> = this.createPostStream();
 
-  constructor() { }
+  constructor(private readonly activatedRoute: ActivatedRoute) {}
 
-  ngOnInit(): void {
+  private createPostStream(): Observable<PostDetailsModel> {
+    return this.activatedRoute.data.pipe(
+      map(data => data.post)
+    );
   }
-
 }

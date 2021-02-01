@@ -1,0 +1,22 @@
+.app-post-details {
+  padding: 24px;
+  width: 100%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.app-post-details__title {
+  font-size: 30px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+
+.app-post-details__illustration {
+  max-width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 16px;
+}
